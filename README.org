@@ -17,11 +17,15 @@
     # +END_SRC
   #+END_SRC
   Then a file with the name of "Creepy.people.javascript" with the contents of:
+  #+name: sample.stuff
   #+BEGIN_SRC javascript
       {
         "name": "Herman Munster",
         "address": "2121 Mockingbird Lane"
       }
+  #+END_SRC
+  #+BEGIN_SRC
+     Where is my stuff
   #+END_SRC
   will be created.
 ** Installation  
