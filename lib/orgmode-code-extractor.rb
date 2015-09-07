@@ -15,8 +15,8 @@ module OrgmodeCodeExractor
       end
 
       desc 'extract <orgmode> [<orgmode> <orgmode> ...] [OPTS]', 'extract code blocks from orgmode documents'
-      option :todir, type: :string, banner: 'directory to extract to', default: './'
-      option :missing, type: :string, banner: 'file to place unnamed code blocks', default: 'unnamed.src'
+      option :todir, type: :string, banner: 'directory to extract to', default: './oce'
+      option :missing, type: :string, banner: 'file to place unnamed code blocks', default: 'unnamed'
       def extract(*orgfiles)
         todir = options[:todir]
         missingfile = options[:missing]
@@ -24,25 +24,22 @@ module OrgmodeCodeExractor
         orgfiles.each do |ofile| 
           rawlines(ofile) do |lines|
             lines.each do |line|
-              puts line
               case line
               when /^[[:space:]]*\#\+(name|NAME):[[:space:]]+([[:graph:]]+)[[:space:]]*/
-                name = $~[2]
-                puts ">>>>>>>> #{name}"
+                name = $~[2] if output.nil?
               when /^[[:space:]]*\#\+(begin_src|BEGIN_SRC)[[:space:]]+([[:graph:]]+)?[[:space:]]*/
                 # open the file for the code block
                 ext = $~[2] || "src"
-                puts ">>>>>>>> #{todir}/#{name}.#{ext}"
                 unless name.nil?
                   output = open(File::expand_path("#{name}.#{ext}", todir), 'w')
                 else
                   output = open(File::expand_path("#{missingfile}.#{ext}", todir), 'a')
                 end
               when /^[[:space:]]*\#\+(end_src|END_SRC|end|END)[[:space:]]*/
-                puts "<<<<<<<< END matched"
-                name = blkname = nil
+                output.close
+                name = ext = output = nil
               else
-                
+                output.write(line) unless output.nil?
               end
             end
           end

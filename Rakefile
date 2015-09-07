@@ -2,6 +2,13 @@
 
 require 'rubygems'
 require 'bundler'
+require 'semver'
+
+def s_version
+  SemVer.find.format "%M.%m.%p%s"
+end
+
+
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
@@ -21,6 +28,8 @@ Jeweler::Tasks.new do |gem|
   gem.description = %Q{Please see the README.org at http://github.com/flajann2/orgmode-code-extractor for the gory details}
   gem.email = "fred.mitchell@gmx.de"
   gem.authors = ["Fred Mitchell"]
+  gem.version = s_version
+  gem.required_ruby_version = '>= 2.0'
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new

@@ -1,4 +1,5 @@
 * orgmode-code-extractor
+** Introduction
   Orgmode-code-extractor takes as a parameter your orgmode file, and optionally a target directory, and will
   spit out the extracted code in your code blocks using the name of 
   #+BEGIN_SRC
@@ -24,17 +25,45 @@
         "address": "2121 Mockingbird Lane"
       }
   #+END_SRC
-  #+BEGIN_SRC
-     Where is my stuff
-  #+END_SRC
   will be created.
-** Installation  
+** Installation
    Installation is accomplished by doing:
    #+BEGIN_SRC commandline
      gem install orgmode-code-extractor
    #+END_SRC
 
+** Usage
+   By default, orgmode-code-extractor will attempt to write the
+   output to a "./oce" directory, which must be present or it
+   will fail. You can specify your own target directory or
+   just create the "./oce" one in your current directory. To get
+   more information on how you can specify your own, type:
+   #+BEGIN_SRC commandline
+     orgmode-code-extractor help extract
+   #+END_SRC
+   at the commandline.
+
+   To run this on your orgmode files,
+   #+BEGIN_SRC commandline
+     orgmode-code-extractor extract yourfile1.org yourfile2.org ...
+   #+END_SRC
+   and it will create the extractions nicely.
+
+** Motivation behind this project
+   There are many ways to actually excute orgmode code blocks, but in my
+   case, I am using orgmode to document a JSON api. There was no clean way
+   availabe at the time to extract these nicely, so I wrote this tool. Just
+   a few lines of code that saved my sanity.
+   
+   You will also note that this document is itself an orgmode file, which
+   was used to test the orgmode-code-extractor. Yes, I eat my own dog food. lol
+
 ** Contributing to orgmode-code-extractor
+   Your contributions are more than welcome, as this was something I threw together
+   quicky in just a couple of hours. It could use better error handling and many other
+   options I did not have the time to throw in. So just the usual branching and pull 
+   request bit as outlined below!
+
 + Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 + Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
 + Fork the project.
