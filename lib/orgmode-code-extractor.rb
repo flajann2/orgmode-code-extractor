@@ -35,7 +35,7 @@ module OrgmodeCodeExractor
                 else
                   output = open(File::expand_path("#{missingfile}.#{ext}", todir), 'a')
                 end
-              when /^[[:space:]]*\#\+(end_src|END_SRC|end|END)[[:space:]]*/
+              when /^[[:space:]]*\#\+(end_src|END_SRC)[[:space:]]*/
                 output.close
                 name = ext = output = nil
               else
