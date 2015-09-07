@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+OCE_PATH = File.expand_path '..', File.dirname(__FILE__)
+OCE_EXECUTABLE = File.expand_path 'bin/orgmode-code-extractor', Dir.pwd
+
+%w{ lib neater neater/rnlib }.each do |dir|
+  $:.unshift File.join([OCE_PATH, dir])
+end
+
+require 'orgmode-code-extractor'
+OrgmodeCodeExractor::Main.start

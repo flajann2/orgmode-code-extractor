@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/flajann2/orgmode-code-extractor"
   gem.license = "MIT"
   gem.summary = %Q{Tool to extract the code blocks from org-mode files and write them out as sperate files}
-  gem.description = %Q{To be added later}
+  gem.description = %Q{Please see the README.org at http://github.com/flajann2/orgmode-code-extractor for the gory details}
   gem.email = "fred.mitchell@gmx.de"
   gem.authors = ["Fred Mitchell"]
   # dependencies defined in Gemfile
