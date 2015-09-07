@@ -8,13 +8,13 @@
   with the extension of the first word following the #+BEGIN_SRC.
   For example, if you have in your org file:
   #+BEGIN_SRC example
-    #+name: Creepy.people
-    #+BEGIN_SRC javascript
+    # +name: Creepy.people
+    # +BEGIN_SRC javascript
       {
         "name": "Herman Munster",
         "address": "2121 Mockingbird Lane"
       }
-    #-END_SRC
+    # +END_SRC
   #+END_SRC
   Then a file with the name of "Creepy.people.javascript" with the contents of:
   #+BEGIN_SRC javascript
