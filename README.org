@@ -2,13 +2,13 @@
 ** Introduction
   Orgmode-code-extractor takes as a parameter your orgmode file, and optionally a target directory, and will
   spit out the extracted code in your code blocks using the name of 
-  #+BEGIN_SRC
+  #+BEGIN_SRC orgmode
     #+name:
   #+END_SRC
   
   with the extension of the first word following the #+BEGIN_SRC.
   For example, if you have in your org file:
-  #+BEGIN_SRC example
+  #+BEGIN_SRC orgmode
     # +name: Creepy.people
     # +BEGIN_SRC javascript
       {
@@ -28,7 +28,7 @@
   will be created.
 ** Installation
    Installation is accomplished by doing:
-   #+BEGIN_SRC commandline
+   #+BEGIN_SRC bash
      gem install orgmode-code-extractor
    #+END_SRC
 
@@ -44,7 +44,7 @@
    at the commandline.
 
    To run this on your orgmode files,
-   #+BEGIN_SRC commandline
+   #+BEGIN_SRC bash
      orgmode-code-extractor extract yourfile1.org yourfile2.org ...
    #+END_SRC
    and it will create the extractions nicely.
