@@ -1,6 +1,7 @@
 * orgmode-code-extractor
 ** Introduction
-  Orgmode-code-extractor takes as a parameter your orgmode file, and optionally a target directory, and will
+  Orgmode-code-extractor takes as a parameter your orgmode file,
+  and optionally a target directory, and will
   spit out the extracted code in your code blocks using the name of 
   #+BEGIN_SRC orgmode
     #+name:

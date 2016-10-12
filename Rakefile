@@ -8,7 +8,6 @@ def s_version
   SemVer.find.format "%M.%m.%p%s"
 end
 
-
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
@@ -16,20 +15,24 @@ rescue Bundler::BundlerError => e
   $stderr.puts "Run `bundle install` to install missing gems"
   exit e.status_code
 end
-require 'rake'
 
+require 'rake'
 require 'jeweler'
+
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
   gem.name = "orgmode-code-extractor"
   gem.homepage = "http://github.com/flajann2/orgmode-code-extractor"
   gem.license = "MIT"
   gem.summary = %Q{Tool to extract the code blocks from org-mode files and write them out as sperate files}
-  gem.description = %Q{Please see the README.org at http://github.com/flajann2/orgmode-code-extractor for the gory details}
+  gem.description = %Q{Orgmode Code Extractor
+    extracts embedded code from your org mode files,
+    to seperate independent ones.
+    }
   gem.email = "fred.mitchell@gmx.de"
   gem.authors = ["Fred Mitchell"]
   gem.version = s_version
-  gem.required_ruby_version = '>= 2.0'
+  gem.required_ruby_version = '>= 2.2'
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new

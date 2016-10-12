@@ -15,8 +15,8 @@ module OrgmodeCodeExractor
       end
 
       desc 'extract <orgmode> [<orgmode> <orgmode> ...] [OPTS]', 'extract code blocks from orgmode documents'
-      option :todir, type: :string, banner: 'directory to extract to', default: './oce'
-      option :missing, type: :string, banner: 'file to place unnamed code blocks', default: 'unnamed'
+      option :todir, aliases: '-t', type: :string, banner: 'directory to extract to', default: './oce'
+      option :missing, aliases: '-m', type: :string, banner: 'file to place unnamed code blocks', default: 'unnamed'
       def extract(*orgfiles)
         todir = options[:todir]
         missingfile = options[:missing]
@@ -30,13 +30,17 @@ module OrgmodeCodeExractor
               when /^[[:space:]]*\#\+(begin_src|BEGIN_SRC)[[:space:]]+([[:graph:]]+)?[[:space:]]*/
                 # open the file for the code block
                 ext = $~[2] || "src"
-                unless name.nil?
-                  output = open(File::expand_path("#{name}.#{ext}", todir), 'w')
-                else
-                  output = open(File::expand_path("#{missingfile}.#{ext}", todir), 'a')
+                begin
+                  unless name.nil?
+                    output = open(File::expand_path("#{name}.#{ext}", todir), 'w')
+                  else
+                    output = open(File::expand_path("#{missingfile}.#{ext}", todir), 'a')
+                  end
+                rescue => e
+                  puts "??? Problem creating #{name}.#{ext} in directory #{todir}"
                 end
               when /^[[:space:]]*\#\+(end_src|END_SRC)[[:space:]]*/
-                output.close
+                output.close unless output.nil?
                 name = ext = output = nil
               else
                 output.write(line) unless output.nil?
