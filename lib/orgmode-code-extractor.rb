@@ -37,7 +37,7 @@ module OrgmodeCodeExractor
                     output = open(File::expand_path("#{missingfile}.#{ext}", todir), 'a')
                   end
                 rescue => e
-                  puts "??? Problem creating #{name}.#{ext} in directory #{todir}"
+                  puts "??? Problem creating #{name}.#{ext} in directory #{todir}: #{e}"
                 end
               when /^[[:space:]]*\#\+(end_src|END_SRC)[[:space:]]*/
                 output.close unless output.nil?

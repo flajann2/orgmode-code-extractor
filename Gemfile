@@ -1,7 +1,7 @@
 source "http://rubygems.org"
 
 gem 'thor', '~> 0'
-gem 'semver', '~> 1'
+gem 'semver2', '~> 3'
 
 group :development do
   gem "rspec", "~> 3"
